@@ -1,7 +1,7 @@
 <?php include header.php; ?>
 
 
-echo 'hola';
+//aqui contenido y logica
 
 
 <?php include footer.php ?>
