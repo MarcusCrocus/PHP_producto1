@@ -1,0 +1,14 @@
+
+
+create table user(
+    username varchar(30);
+    password varchar(30);  //esta ira con la funcion md5
+    id int not null auto_increment primary key;
+    role enum('administrator', 'user', 'ponente')
+);
+
+
+create table evento();
+
+
+
