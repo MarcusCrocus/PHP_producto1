@@ -1,0 +1,47 @@
+version: '3.9'
+services:
+  db:
+    image: mysql
+    container_name: db
+    restart: always
+    networks:
+    - php
+    volumes:
+    - d:/Programming_Storage/VS_Code_Projects/UOC/php/producto2/ddbb/:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootPass1234
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbuserPass1234
+      
+  web_server:
+    image: cesarperezsampedro/my-repo:php-apache-laravel-v3
+    container_name: web_server
+    restart: always
+    networks:
+    - php
+    ports: 
+    - 8000:80
+    volumes:
+    #Volumen de wordpress
+    #- /home/yo/Escritorio/FP.064 - (P) Desarrollo back-end con PHP, framework MVC y CMS/env_pre/web:/var/www/html
+    #Volumend de project
+    - d:/Programming_Storage/VS_Code_Projects/UOC/php/producto2/project-php/:/var/www/html
+    depends_on:
+    - db
+
+  admindb:
+    image: phpmyadmin
+    container_name: admindb
+    restart: always
+    networks:
+    - php
+    ports: 
+    - 8001:80
+    depends_on:
+    - db
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: rootPass1234
+networks:
+ php:

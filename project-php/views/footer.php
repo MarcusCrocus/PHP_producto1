@@ -1,7 +1,7 @@
 <?php
-    </body>
-    <footer>
-        <p>UOC 2022</p>
-    </footer>
-</html>
+    echo "<footer>";
+        echo "UOC 2022";
+    echo "</footer>";
+   echo "</body>";
+echo "</html>";
 ?>

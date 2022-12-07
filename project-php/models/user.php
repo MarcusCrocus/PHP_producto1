@@ -1,20 +1,27 @@
 <?php
-requier_once('../config/conexion.php');
+//requier_once('../config/conexion.php');
 
-class user{
+class Usuario{
     private $id;
     private $username;
     private $password;
-    private $role;
+    private $persona;
+    private $tipoUsuario;
+    private $idPersona;
 
-    function __construct($user, $pass, $rol='usuario'){
-        $this->$username= $user;
-        $this->$password= $pass;
-        $this->$role= $rol;
+    function __construct($user, $pass, $person, $tipoUsuario='usuario'){
+        $this->username= $user;
+        $this->password= $pass;
+        $this->persona= $person;
+        $this->tipoUsuario= $tipoUsuario;
     }
 
     public function getId(){
         return $this->id;
+    }
+
+    public function getPersona(){
+        return $this->persona;
     }
 
     public function getUsername(){
@@ -25,34 +32,31 @@ class user{
         return $this->password;
     }
 
-    public function setId(arg){
-        $this->id= $id;
+    public function getTipoUsuario(){
+        return $this->tipoUsuario;
+    }
+    
+
+    public function setId($arg){
+        $this->id= $arg;
+    }
+    
+    public function setPersona($arg){
+        $this->persona= $arg;
     }
 
-    public function setUsername(arg){
+    public function setUsername($arg){
         $this->username= $arg;
     }
 
-    public function setPassword(arg){
+    public function setPassword($arg){
         $this->password= $arg;
     }
 
-
-    public function getAllUsers(){
-        $conn= connect();
-        $query= $conn.prepare('SELECT * FROM users');
-        $query->execute();
-        return $query->fetchAll(); 
+    public function setTipoUsuario($arg){
+        $this->tipoUsuario= $arg;
     }
 
-    public function getUserByUsername($arg){.
-        $conn= connect();
-        $query= $conn.prepare('SELECT $arg FROM users');
-        $query->execute();
-        return $query->fetchAll();
-    }
-
-    public function checkPassword($arg){}
 }
 
 ?>

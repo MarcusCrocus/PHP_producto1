@@ -1,18 +1,15 @@
 <?php
-
-public function connect(){
-    $user= 
-    $pwd=
-    $dbname=
-    $dbhost=
+function connect(){
+    $user= "root";
+    $pwd= "rootPass1234";
+    $dsn='mysql:host=db;port=db;dbname=wordpress3';
+    $options= [];
     try{
-        $connection= new PDO('mysql:host='.$dbhost.';dbname='.$dbname, $user, $pwd);
-        return $connection;
+        $conn= new PDO($dsn, $user, $pwd, $options);
+        return $conn;
     }
-    catch(PDOExcepcion $e){
-        return print "Error de conexion: ".$e->getMessage();
+    catch(PDOException $e){
+        exit("Error: ". $e->getMessage());
     }
-    
 }
-
 ?>
